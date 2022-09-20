@@ -4,12 +4,19 @@ const resolvers: Resolvers = {
   Mutation: {
     createUser: async (
       _,
-      { username, name, email, password, location },
+      { username, name, email, password, location, isOwner },
       { client }
     ) => {
       const hashedPassword = await hash(password, 10);
       const newUser = await client.user.create({
-        data: { username, name, email, password: hashedPassword, location },
+        data: {
+          username,
+          name,
+          email,
+          password: hashedPassword,
+          location,
+          isOwner,
+        },
       });
       if (!newUser) {
         return {

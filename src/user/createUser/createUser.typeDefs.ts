@@ -12,6 +12,7 @@ export default gql`
       email: String!
       password: String!
       location: String
+      isOwner: Boolean!
     ): createUserStatus!
   }
 `;

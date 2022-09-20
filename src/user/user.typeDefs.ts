@@ -8,5 +8,6 @@ export default gql`
     name: String!
     location: String!
     profileImg: String
+    isOwner: Boolean!
   }
 `;

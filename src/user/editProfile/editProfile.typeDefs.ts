@@ -14,6 +14,7 @@ export default gql`
       location: String
       profileImg: Upload
       password: String
+      isOwner: Boolean
     ): editProfileStatus!
   }
 `;

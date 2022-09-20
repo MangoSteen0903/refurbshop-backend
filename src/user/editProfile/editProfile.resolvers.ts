@@ -2,6 +2,7 @@ import { hash } from "bcrypt";
 import e = require("express");
 import { createWriteStream } from "fs";
 import { GraphQLUpload } from "graphql-upload";
+import { uploadToS3 } from "../../shared/shared.utils";
 import { Resolvers } from "../types";
 import { protectedResolver } from "../user.utils";
 
@@ -10,23 +11,21 @@ export const resolvers: Resolvers = {
     editProfile: protectedResolver(
       async (
         _,
-        { email, username, name, location, profileImg, password: newPassword },
+        {
+          email,
+          username,
+          name,
+          location,
+          profileImg,
+          password: newPassword,
+          isOwner,
+        },
         { client, loggedInUser }
       ) => {
         let hashPassword = null;
         let profileUrl = null;
         if (profileImg) {
-          const {
-            file: { filename, createReadStream },
-          } = await profileImg;
-
-          const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
-          const stream = createReadStream();
-          const result = createWriteStream(
-            process.cwd() + "/uploads/" + newFilename
-          );
-          stream.pipe(result);
-          profileUrl = `https://milkymilkycode.com/proxy/4000/static/${newFilename}`;
+          profileUrl = await uploadToS3("user", profileImg, loggedInUser.id);
         }
 
         if (newPassword) {
@@ -40,11 +39,11 @@ export const resolvers: Resolvers = {
             username,
             name,
             location,
+            isOwner,
             ...(profileUrl && { profileImg: profileUrl }),
             ...(hashPassword && { password: hashPassword }),
           },
         });
-
 
         if (!updatedUser.id) {
           return {
