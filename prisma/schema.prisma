@@ -47,6 +47,7 @@ model Item {
   description String?
   image       String?
   limitDate   String
+  amount      Int      @default(0)
   store       Store    @relation(fields: [storeId], references: [id])
   storeId     Int
   createdAt   DateTime @default(now())

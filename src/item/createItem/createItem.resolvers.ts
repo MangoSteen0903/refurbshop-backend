@@ -7,7 +7,7 @@ const resolver: Resolvers = {
     createItem: protectedResolver(
       async (
         _,
-        { name, price, description, image, limitDate },
+        { name, price, description, image, limitDate, amount },
         { client, loggedInUser, currentStore }
       ) => {
         let itemImageUrl = "";
@@ -54,6 +54,7 @@ const resolver: Resolvers = {
                 id: currentStore,
               },
             },
+            amount,
           },
         });
         console.log(newItem);

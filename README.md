@@ -29,7 +29,7 @@
 
 ## Product
 
-- [ ] Create Product
-- [ ] View Product
-- [ ] Edit Product
+- [x] Create Product
+- [x] View Product
+- [x] Edit Product
 - [ ] Delete Product

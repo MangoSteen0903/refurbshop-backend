@@ -8,6 +8,8 @@ export default gql`
     description: String
     image: String
     limitDate: String!
+    amount: Int!
+    isOutofStock: Boolean!
     store: Store
   }
 `;
