@@ -1,6 +1,7 @@
 import { uploadToS3 } from "../../shared/shared.utils";
 import { Resolvers } from "../../user/types";
 import { protectedResolver } from "../../user/user.utils";
+import { getGeoLocation } from "../store.utils";
 
 const resolver: Resolvers = {
   Mutation: {
@@ -33,11 +34,19 @@ const resolver: Resolvers = {
           );
         }
 
+        const { roadAddress, jibunAddress } = await getGeoLocation(location);
+
         const newStore = await client.store.create({
           data: {
-            userId: loggedInUser.id,
+            user: {
+              connect: {
+                id: loggedInUser.id,
+              },
+            },
             name,
             location,
+            roadAddress,
+            jibunAddress,
             description,
             ...(bannerUrl && { bannerImg: bannerUrl }),
             ...(profileUrl && { profileImg: profileUrl }),

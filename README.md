@@ -21,11 +21,11 @@
 
 ## Store
 
-- [ ] Create Store
-- [ ] View Store Feed
-- [ ] Edit Store
-- [ ] Delete Store
-- [ ] Upload Store Image
+- [x] Create Store
+- [x] View Store Feed
+- [x] Edit Store
+- [x] Delete Store
+- [x] Upload Store Image
 
 ## Product
 
@@ -33,9 +33,3 @@
 - [ ] View Product
 - [ ] Edit Product
 - [ ] Delete Product
-
-## Category on Product
-
-- [ ] Create Category
-- [ ] Delete Category
-- [ ] Edit Category

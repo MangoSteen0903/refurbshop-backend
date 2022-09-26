@@ -9,5 +9,8 @@ export default gql`
     bannerImg: String!
     profileImg: String!
     items: [Item]
+    roadAddress: String!
+    jibunAddress: String!
+    distance: String
   }
 `;

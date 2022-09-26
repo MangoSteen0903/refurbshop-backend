@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "Store" ALTER COLUMN "bannerImg" DROP NOT NULL,
-ALTER COLUMN "profileImg" DROP NOT NULL;

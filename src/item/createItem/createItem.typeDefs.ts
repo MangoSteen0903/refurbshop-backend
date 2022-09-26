@@ -2,18 +2,17 @@ import { gql } from "apollo-server-express";
 
 export default gql`
   scalar Upload
-  type editStoreStatus {
+  type createStoreResult {
     ok: Boolean!
     error: String
   }
   type Mutation {
-    editStore(
-      id: Int!
-      name: String
-      location: String
+    createItem(
+      name: String!
+      price: Int!
       description: String
-      bannerImg: Upload
-      profileImg: Upload
-    ): editStoreStatus!
+      image: Upload
+      limitDate: String!
+    ): createStoreResult!
   }
 `;

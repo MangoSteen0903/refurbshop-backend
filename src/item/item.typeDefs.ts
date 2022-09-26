@@ -4,8 +4,10 @@ export default gql`
   type Item {
     id: Int!
     name: String!
-    Store: Store!
     price: Int!
-    profileImg: String!
+    description: String
+    image: String
+    limitDate: String!
+    store: Store
   }
 `;

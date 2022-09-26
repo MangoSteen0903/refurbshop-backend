@@ -14,7 +14,12 @@ async function startServer() {
     context: async ({ req }) => {
       return {
         loggedInUser: await getUser(req.headers.token),
+        coordinates: {
+          x: req.headers.longitude,
+          y: req.headers.latitude,
+        },
         client,
+        currentStore: parseInt(await req.headers.currentstoreid),
       };
     },
     plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],

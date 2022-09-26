@@ -4,6 +4,11 @@ import { GraphQLScalarType } from "graphql";
 type Context = {
   loggedInUser?: User;
   client: PrismaClient;
+  coordinates: {
+    x: string;
+    y: string;
+  };
+  currentStore: number;
 };
 export type Resolver = (
   root: any,

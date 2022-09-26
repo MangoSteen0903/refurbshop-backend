@@ -9,5 +9,6 @@ export default gql`
     location: String!
     profileImg: String
     isOwner: Boolean!
+    currentCoordinate: String
   }
 `;

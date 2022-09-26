@@ -11,50 +11,44 @@ datasource db {
 }
 
 model User {
-  id         Int        @id @default(autoincrement())
-  email      String     @unique
-  username   String     @unique
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  username   String   @unique
   location   String?
   name       String
   password   String
   profileImg String?
-  createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
   isOwner    Boolean
-  wishlists  Wishlist[]
+  Store      Store[]
 }
 
 model Store {
-  id          Int        @id @default(autoincrement())
-  name        String
-  location    String
-  description String?
-  bannerImg   String?
-  profileImg  String?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  Item        Item[]
-  userId      Int
-  wishlists   Wishlist[]
+  id           Int      @id @default(autoincrement())
+  name         String
+  location     String
+  roadAddress  String
+  jibunAddress String
+  description  String?
+  bannerImg    String?
+  profileImg   String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id])
+  userId       Int
+  Item         Item[]
 }
 
 model Item {
-  id         Int      @id @default(autoincrement())
-  name       String
-  Store      Store    @relation(fields: [storeId], references: [id])
-  storeId    Int
-  price      Int
-  profileImg String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-}
-
-model Wishlist {
-  id        Int      @id @default(autoincrement())
-  user      User     @relation(fields: [userId], references: [id])
-  store     Store    @relation(fields: [storeId], references: [id])
-  userId    Int
-  storeId   Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  name        String
+  price       Int
+  description String?
+  image       String?
+  limitDate   String
+  store       Store    @relation(fields: [storeId], references: [id])
+  storeId     Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
