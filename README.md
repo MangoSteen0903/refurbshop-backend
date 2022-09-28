@@ -8,16 +8,17 @@
 - [x] View Profile
 - [x] Login
 - [x] Edit Profile
-- [ ] Like/Unlike Store
+- [x] Like/Unlike Store
 - [x] Change Profile Image
-- [ ] Leave a Review on Store
+- [x] Leave a Review on Store
 
 ## Review
 
-- [ ] Create Review
-- [ ] Delete Review
-- [ ] Edit Review
-- [ ] Like/Unlike Store
+- [x] View Review Feed
+- [x] Create Review
+- [x] Delete Review
+- [x] Edit Review
+- [ ] Like/Unlike Review
 
 ## Store
 
@@ -32,4 +33,8 @@
 - [x] Create Product
 - [x] View Product
 - [x] Edit Product
-- [ ] Delete Product
+- [x] Delete Product
+
+## Direct Message to Owner
+
+- [] Chat with owner

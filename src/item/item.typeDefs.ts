@@ -11,5 +11,6 @@ export default gql`
     amount: Int!
     isOutofStock: Boolean!
     store: Store
+    likes: Int!
   }
 `;

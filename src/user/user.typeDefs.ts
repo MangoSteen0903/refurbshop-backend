@@ -10,5 +10,6 @@ export default gql`
     profileImg: String
     isOwner: Boolean!
     currentCoordinate: String
+    wishlist: [Item]
   }
 `;

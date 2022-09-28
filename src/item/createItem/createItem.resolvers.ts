@@ -10,6 +10,12 @@ const resolver: Resolvers = {
         { name, price, description, image, limitDate, amount },
         { client, loggedInUser, currentStore }
       ) => {
+        if (!currentStore) {
+          return {
+            ok: false,
+            error: "Please go to any store then add a item.",
+          };
+        }
         let itemImageUrl = "";
         const store = await client.store.findUnique({
           where: { id: currentStore },
