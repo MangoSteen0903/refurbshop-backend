@@ -37,4 +37,4 @@
 
 ## Direct Message to Owner
 
-- [] Chat with owner
+- [ ] Chat with owner
